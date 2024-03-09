@@ -112,6 +112,10 @@ output "endpoint" {
   value = aws_transfer_server.host_artifact_transfer_server.endpoint  
 }
 
+output "ftp_user" {
+  value = aws_transfer_user.sftp_user.user_name
+}
+
 //terraform apply -auto-approve && terraform output private_key
 
 

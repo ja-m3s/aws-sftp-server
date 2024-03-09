@@ -9,6 +9,7 @@ toolbox run sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.co
 toolbox run sudo dnf -y install terraform
 toolbox run sudo dnf install -y git 
 toolbox run sudo dnf install -y awscli2 
+toolbox run sudo dnf install -y pass 
 
 //TODO
 //Programmatic access setup i.e. aws configure
