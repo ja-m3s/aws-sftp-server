@@ -15,6 +15,9 @@ FTP_USER_PRIVATE_KEY=$(terraform output -raw private_key)
 FTP_USER_NAME=$(terraform output -raw ftp_user)
 FTP_SERVER_ENDPOINT=$(terraform output -raw endpoint)
 
+IONOS_API_URL="https://cloudpanel-api.ionos.com/v1";
+IONOS_API_TOKEN=$(pass ionos/IONOS_API_TOKEN);
+
 curl --request POST \
   --url "https://circleci.com/api/v2/project/${CIRCLE_PROJECT_SLUG}/envvar" \
   --header "Circle-Token: $CIRCLE_API_TOKEN" \
@@ -76,4 +79,22 @@ curl --request POST \
   --data '{
     "name": "AWS_REGION",
     "value": "'"$AWS_REGION"'"
+  }'
+
+  curl --request POST \
+  --url "https://circleci.com/api/v2/project/${CIRCLE_PROJECT_SLUG}/envvar" \
+  --header "Circle-Token: $CIRCLE_API_TOKEN" \
+  --header 'content-type: application/json' \
+  --data '{
+    "name": "IONOS_API_URL",
+    "value": "'"$IONOS_API_URL"'"
+  }'
+
+curl --request POST \
+  --url "https://circleci.com/api/v2/project/${CIRCLE_PROJECT_SLUG}/envvar" \
+  --header "Circle-Token: $CIRCLE_API_TOKEN" \
+  --header 'content-type: application/json' \
+  --data '{
+    "name": "IONOS_API_TOKEN",
+    "value": "'"$IONOS_API_TOKEN"'"
   }'
